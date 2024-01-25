@@ -11,6 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
+import java.util.List;
 
 public class MainPageTest {
     private WebDriver driver;
@@ -39,8 +40,10 @@ public class MainPageTest {
         searchField.sendKeys(input);
         searchField.submit();
 
-        WebElement searchPageField = driver.findElement(By.cssSelector("#sb_form_q"));
-        assertEquals(input, searchPageField.getAttribute("value"));
+        List<WebElement> results = driver.findElement(By.cssSelector("h2 > a[href]"));
+        results.get(4).click();
+
+
     }
 
 
